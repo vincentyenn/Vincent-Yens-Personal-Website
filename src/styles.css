@@ -312,20 +312,26 @@ a:focus-visible {
   overflow: hidden;
 }
 
-.hero__wash {
+.hero__visual {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(8, 8, 8, 0.78), rgba(8, 8, 8, 0.18) 72%),
-    url('/assets/project-covers.png') left center / 300% 100% no-repeat;
-  filter: saturate(0.72) contrast(1.08);
+    radial-gradient(circle at 82% 20%, rgba(73, 184, 120, 0.2), transparent 38%),
+    linear-gradient(145deg, #123d2a 0%, #101b16 46%, #111111 100%);
 }
 
-.hero__wash::after {
-  content: '';
+.hero__visual canvas {
+  transform: translateX(15%) scale(1.08) !important;
+  transform-origin: center;
+}
+
+.hero__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 45%, #181817 100%);
+  background:
+    linear-gradient(90deg, rgba(9, 10, 9, 0.9) 0%, rgba(9, 10, 9, 0.66) 48%, rgba(9, 10, 9, 0.08) 100%),
+    linear-gradient(180deg, rgba(9, 10, 9, 0.04) 42%, #181817 100%);
+  pointer-events: none;
 }
 
 .hero__content {
@@ -999,6 +1005,118 @@ a:focus-visible {
   background: #121212;
 }
 
+.projects-page {
+  padding: 52px 36px 84px;
+  background:
+    radial-gradient(circle at 84% 4%, rgba(73, 184, 120, 0.1), transparent 32%),
+    #121212;
+}
+
+.projects-page__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.projects-page__header h1 {
+  margin: 0;
+  font-size: clamp(2.45rem, 5vw, 4.7rem);
+  letter-spacing: -0.055em;
+}
+
+.projects-page__header p {
+  max-width: 500px;
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.projects-page__header > span {
+  flex: none;
+  padding-bottom: 7px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.project-playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.project-playlist-link {
+  min-width: 0;
+}
+
+.project-playlist-card {
+  position: relative;
+  min-width: 0;
+  padding: 12px;
+  border-radius: var(--radius);
+  background: #191919;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.project-playlist-card:hover {
+  background: #282828;
+  transform: translateY(-3px);
+}
+
+.project-playlist-card .cover-art {
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 14px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+}
+
+.project-playlist-card__copy,
+.project-playlist-card__copy > span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-playlist-card__copy > strong {
+  display: block;
+  overflow: hidden;
+  color: var(--text);
+  font-size: 0.95rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-playlist-card__copy > span {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.project-playlist-card__play {
+  position: absolute;
+  right: 20px;
+  bottom: 58px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #08120c;
+  background: var(--accent-strong);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.project-playlist-card:hover .project-playlist-card__play,
+.project-playlist-link:focus-visible .project-playlist-card__play {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .playlist-header,
 .project-detail__header {
   display: grid;
@@ -1381,7 +1499,7 @@ a:focus-visible {
   }
 
   .topbar::before {
-    content: 'The Connection';
+    content: 'Vincent Yen';
     font-weight: 800;
     letter-spacing: -0.02em;
   }
@@ -1410,10 +1528,14 @@ a:focus-visible {
     padding: 96px 20px 32px;
   }
 
-  .hero__wash {
+  .hero__scrim {
     background:
-      linear-gradient(180deg, rgba(8, 8, 8, 0.08), rgba(8, 8, 8, 0.9) 78%),
-      url('/assets/project-covers.png') left center / auto 100% no-repeat;
+      linear-gradient(180deg, rgba(9, 10, 9, 0.18) 0%, rgba(9, 10, 9, 0.56) 46%, rgba(9, 10, 9, 0.94) 82%, #181817 100%),
+      linear-gradient(90deg, rgba(9, 10, 9, 0.58), rgba(9, 10, 9, 0.08));
+  }
+
+  .hero__visual canvas {
+    transform: translateX(8%) scale(1.14) !important;
   }
 
   .hero h1 {
@@ -1580,6 +1702,55 @@ a:focus-visible {
     grid-template-columns: 1fr auto;
   }
 
+  .projects-page {
+    padding: 34px 16px 48px;
+  }
+
+  .projects-page__header {
+    align-items: start;
+    margin-bottom: 24px;
+  }
+
+  .projects-page__header h1 {
+    font-size: 2.35rem;
+  }
+
+  .projects-page__header p {
+    max-width: 310px;
+    font-size: 0.9rem;
+  }
+
+  .projects-page__header > span {
+    display: none;
+  }
+
+  .project-playlist-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .project-playlist-card {
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .project-playlist-card .cover-art {
+    margin-bottom: 10px;
+  }
+
+  .project-playlist-card__copy > strong {
+    font-size: 0.86rem;
+  }
+
+  .project-playlist-card__copy > span {
+    margin-top: 3px;
+    font-size: 0.72rem;
+  }
+
+  .project-playlist-card__play {
+    display: none;
+  }
+
   .playlist-header,
   .project-detail__header {
     grid-template-columns: 1fr;
@@ -1659,6 +1830,12 @@ a:focus-visible {
   .missing-project {
     min-height: calc(100dvh - 60px - var(--mobile-player-height) - var(--mobile-nav-height));
     padding: 36px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__visual canvas {
+    display: none;
   }
 }
 

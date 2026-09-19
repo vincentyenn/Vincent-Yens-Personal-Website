@@ -45,12 +45,12 @@ export function ConnectionVisual() {
   }, [])
 
   return (
-    <section className="connection-panel" aria-label="The Connection visual">
+    <section className="connection-panel" aria-label="Home visual">
       <div ref={elementRef} className="connection-canvas" aria-hidden="true" />
       <div className="connection-panel__content">
         <p className="meta-label">Now exploring</p>
-        <h2>The Connection</h2>
-        <p>Ideas, projects, and the choices that connect them.</p>
+        <h2>Home</h2>
+        <p>Ideas, projects, and the choices behind each build.</p>
       </div>
     </section>
   )

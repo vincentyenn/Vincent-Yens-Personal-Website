@@ -1,45 +1,38 @@
-import { DotsThree, Play, Shuffle, Timer } from '@phosphor-icons/react'
+import { Play } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { CoverArt } from '../components/CoverArt'
+import { SpotlightCard } from '../components/SpotlightCard'
 import { projects } from '../data/content'
 
 export function ProjectsPage() {
   return (
     <div className="projects-page">
-      <header className="playlist-header">
-        <div className="playlist-header__mosaic" aria-hidden="true">
-          {projects.map((project) => <CoverArt key={project.slug} position={project.coverPosition} />)}
-          <div className="playlist-header__monogram">VY</div>
+      <header className="projects-page__header">
+        <div>
+          <h1>Projects</h1>
+          <p>Each project is a playlist. Open one to explore the work behind it.</p>
         </div>
-        <div className="playlist-header__copy">
-          <span>Portfolio playlist</span>
-          <h1>Selected Work</h1>
-          <p>Projects, experiments, and technical work organized by the decisions behind them.</p>
-          <div className="playlist-header__owner"><strong>Vincent Yen</strong><span>{projects.length} projects</span></div>
-        </div>
+        <span>{projects.length} playlists</span>
       </header>
 
-      <section className="project-list" aria-labelledby="projects-heading">
-        <div className="playlist-actions">
-          <button type="button" className="round-play" aria-label="Play selected work"><Play size={27} weight="fill" /></button>
-          <button type="button" aria-label="Shuffle projects"><Shuffle size={30} /></button>
-          <button type="button" aria-label="More project options"><DotsThree size={31} weight="bold" /></button>
-        </div>
+      <section aria-labelledby="projects-heading">
         <h2 className="sr-only" id="projects-heading">Project playlists</h2>
-        <div className="project-table__header" aria-hidden="true">
-          <span>#</span><span>Title</span><span>Category</span><span>Year</span><Timer size={18} />
-        </div>
-        <div className="project-table">
-          {projects.map((project, index) => (
-            <Link className="project-row" key={project.slug} to={`/projects/${project.slug}`}>
-              <span className="project-row__index">{index + 1}</span>
-              <span className="project-row__title">
+        <div className="project-playlist-grid">
+          {projects.map((project) => (
+            <Link
+              className="project-playlist-link"
+              key={project.slug}
+              to={`/projects/${project.slug}`}
+              aria-label={`Open ${project.title}, ${project.category} project playlist`}
+            >
+              <SpotlightCard className="project-playlist-card">
                 <CoverArt position={project.coverPosition} />
-                <span><strong>{project.title}</strong><small>{project.status}</small></span>
-              </span>
-              <span>{project.category}</span>
-              <span>{project.year}</span>
-              <span>{project.tracks.length} tracks</span>
+                <span className="project-playlist-card__copy">
+                  <strong>{project.title}</strong>
+                  <span>By Vincent</span>
+                </span>
+                <span className="project-playlist-card__play" aria-hidden="true"><Play size={20} weight="fill" /></span>
+              </SpotlightCard>
             </Link>
           ))}
         </div>

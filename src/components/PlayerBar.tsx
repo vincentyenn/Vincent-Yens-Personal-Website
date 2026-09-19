@@ -9,6 +9,8 @@ import {
   SkipForward,
 } from '@phosphor-icons/react'
 import type { RefObject } from 'react'
+import { useLocation } from 'react-router-dom'
+import { projects } from '../data/content'
 
 const IconLink = ({ href, label, children }: { href: string; label: string; children: React.ReactNode }) => (
   <a className="icon-action" href={href} aria-label={label} target={href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
@@ -24,12 +26,16 @@ type PlayerBarProps = {
 }
 
 export function PlayerBar({ progressRef, currentTimeRef, totalTimeRef, timelineRef }: PlayerBarProps) {
+  const location = useLocation()
+  const selectedProject = projects.find((project) => location.pathname === `/projects/${project.slug}`)
+  const currentPage = selectedProject?.title ?? (location.pathname === '/projects' ? 'Projects' : 'Home')
+
   return (
     <footer className="player" aria-label="Page exploration controls">
       <div className="player__identity">
         <div className="player__cover" aria-hidden="true" />
         <div>
-          <strong>The Connection</strong>
+          <strong>{currentPage}</strong>
           <span>Vincent Yen</span>
         </div>
       </div>

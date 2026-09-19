@@ -30,7 +30,7 @@ export type SearchItem = {
 export const projects: Project[] = [
   {
     slug: 'the-connection',
-    title: 'The Connection',
+    title: 'Personal Website',
     category: 'Portfolio system',
     year: '2026',
     status: 'In progress',
@@ -42,7 +42,7 @@ export const projects: Project[] = [
       {
         id: 'overview', title: 'Overview', description: 'The idea and the experience it creates.', duration: '1:12',
         body: [
-          'The Connection reframes a portfolio as a library people can browse at their own pace. Pages become destinations, projects become playlists, and case-study sections become tracks.',
+          'This portfolio reframes a portfolio as a library people can browse at their own pace. Pages become destinations, projects become playlists, and case-study sections become tracks.',
           'The interface keeps Vincent Yen visible without turning every label into personal branding. The result feels familiar at first, then becomes more individual as the content unfolds.',
         ],
       },

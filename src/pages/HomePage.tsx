@@ -3,6 +3,7 @@ import { ArrowRight, Play } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { CoverArt } from '../components/CoverArt'
+import { HeroVisual } from '../components/HeroVisual'
 import { SpotlightCard } from '../components/SpotlightCard'
 import { projects } from '../data/content'
 
@@ -24,10 +25,11 @@ export function HomePage() {
   return (
     <div ref={pageRef} className="home-page">
       <section className="hero" aria-labelledby="home-heading">
-        <div className="hero__wash" aria-hidden="true" />
+        <HeroVisual />
+        <div className="hero__scrim" aria-hidden="true" />
         <div className="hero__content">
           <p data-hero-reveal className="meta-label">Vincent Yen</p>
-          <h1 data-hero-reveal id="home-heading">Building digital experiences with rhythm.</h1>
+          <h1 data-hero-reveal id="home-heading">Hi, I'm Vincent. Welcome to my website.</h1>
           <p data-hero-reveal>I turn ideas into clear, considered interfaces that invite people to explore.</p>
           <div data-hero-reveal className="hero__actions">
             <Link className="primary-action" to="/projects">
@@ -42,7 +44,7 @@ export function HomePage() {
         <CoverArt position="left" className="featured-project__art" />
         <div className="featured-project__copy">
           <p className="meta-label">Featured project</p>
-          <h2 id="featured-title">The Connection</h2>
+          <h2 id="featured-title">{projects[0].title}</h2>
           <p>{projects[0].summary}</p>
           <Link to="/projects/the-connection">Open project <ArrowRight size={18} /></Link>
         </div>

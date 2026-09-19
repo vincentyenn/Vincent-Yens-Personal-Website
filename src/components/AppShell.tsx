@@ -10,6 +10,7 @@ import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ConnectionVisual } from './ConnectionVisual'
 import { CoverArt } from './CoverArt'
+import { projects } from '../data/content'
 import { PlayerBar } from './PlayerBar'
 import { ProjectContextPanel } from './ProjectContextPanel'
 import { SearchOverlay } from './SearchOverlay'
@@ -87,9 +88,14 @@ export function AppShell() {
             ))}
           </nav>
 
-          <div className="library__section-title"><span>Collections</span><MagnifyingGlass size={17} /></div>
+          <div className="library__section-title"><span>Library</span><MagnifyingGlass size={17} /></div>
           <div className="library__collections">
-            <NavLink to="/projects"><CoverArt position="left" /><span><strong>Selected Work</strong><small>Project collection</small></span></NavLink>
+            {projects.map((project) => (
+              <NavLink key={project.slug} to={`/projects/${project.slug}`}>
+                <CoverArt position={project.coverPosition} />
+                <span><strong>{project.title}</strong><small>Project playlist</small></span>
+              </NavLink>
+            ))}
             <NavLink to="/#learning"><CoverArt position="center" /><span><strong>Current Learning</strong><small>Updated regularly</small></span></NavLink>
             <NavLink to="/#about-preview"><CoverArt position="right" /><span><strong>About Vincent</strong><small>Profile preview</small></span></NavLink>
           </div>
