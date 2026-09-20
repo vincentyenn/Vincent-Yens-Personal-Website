@@ -28,7 +28,14 @@ type PlayerBarProps = {
 export function PlayerBar({ progressRef, currentTimeRef, totalTimeRef, timelineRef }: PlayerBarProps) {
   const location = useLocation()
   const selectedProject = projects.find((project) => location.pathname === `/projects/${project.slug}`)
-  const currentPage = selectedProject?.title ?? (location.pathname === '/projects' ? 'Projects' : 'Home')
+  const currentPage = selectedProject?.title
+    ?? (location.pathname === '/projects'
+      ? 'Projects'
+      : location.pathname === '/about'
+        ? 'Profile'
+        : location.pathname === '/experience'
+          ? 'Experience'
+          : 'Home')
 
   return (
     <footer className="player" aria-label="Page exploration controls">
@@ -59,7 +66,7 @@ export function PlayerBar({ progressRef, currentTimeRef, totalTimeRef, timelineR
 
       <div className="player__socials">
         <IconLink href="https://github.com/vincentyenn" label="Open Vincent's GitHub"><GithubLogo size={21} /></IconLink>
-        <button className="icon-action icon-action--pending" type="button" aria-label="LinkedIn link coming soon" title="LinkedIn link coming soon" disabled><LinkedinLogo size={21} /></button>
+        <IconLink href="https://linkedin.com/in/vincentcyen" label="Open Vincent's LinkedIn"><LinkedinLogo size={21} /></IconLink>
         <button className="icon-action icon-action--pending" type="button" aria-label="Email link coming soon" title="Email link coming soon" disabled><EnvelopeSimple size={22} /></button>
       </div>
     </footer>

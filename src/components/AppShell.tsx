@@ -2,14 +2,18 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import {
   ArrowLeft,
   ArrowRight,
+  Briefcase,
   House,
   MagnifyingGlass,
   Stack,
+  UserCircle,
 } from '@phosphor-icons/react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
+import { AboutContextPanel } from './AboutContextPanel'
 import { ConnectionVisual } from './ConnectionVisual'
 import { CoverArt } from './CoverArt'
+import { ExperienceContextPanel } from './ExperienceContextPanel'
 import { projects } from '../data/content'
 import { PlayerBar } from './PlayerBar'
 import { ProjectContextPanel } from './ProjectContextPanel'
@@ -19,6 +23,8 @@ import { SmoothScrollProvider } from './SmoothScrollProvider'
 const navItems = [
   { label: 'Home', to: '/', icon: House },
   { label: 'Projects', to: '/projects', icon: Stack },
+  { label: 'Profile', to: '/about', icon: UserCircle },
+  { label: 'Experience', to: '/experience', icon: Briefcase },
 ]
 
 export function AppShell() {
@@ -75,7 +81,7 @@ export function AppShell() {
             <span>What do you want to explore?</span>
             <kbd>⌘ K</kbd>
           </button>
-          <div className="topbar__profile" aria-label="Vincent Yen"><span>VY</span></div>
+          <NavLink className="topbar__profile" to="/about" aria-label="Open Vincent Yen profile"><span>VY</span></NavLink>
         </header>
 
         <aside className="library" aria-label="Portfolio library">
@@ -97,7 +103,8 @@ export function AppShell() {
               </NavLink>
             ))}
             <NavLink to="/#learning"><CoverArt position="center" /><span><strong>Current Learning</strong><small>Updated regularly</small></span></NavLink>
-            <NavLink to="/#about-preview"><CoverArt position="right" /><span><strong>About Vincent</strong><small>Profile preview</small></span></NavLink>
+            <NavLink to="/about"><CoverArt position="right" /><span><strong>About Vincent</strong><small>Profile page</small></span></NavLink>
+            <NavLink to="/experience"><span className="library__resume-cover" aria-hidden="true">CV</span><span><strong>Resume &amp; Experience</strong><small>Work and education</small></span></NavLink>
           </div>
         </aside>
 
@@ -111,7 +118,13 @@ export function AppShell() {
 
         {!isProjectDetail && (
           <aside className="context-panel">
-            {location.pathname === '/' ? <ConnectionVisual /> : <ProjectContextPanel />}
+            {location.pathname === '/'
+              ? <ConnectionVisual />
+              : location.pathname === '/about'
+                ? <AboutContextPanel />
+                : location.pathname === '/experience'
+                  ? <ExperienceContextPanel />
+                  : <ProjectContextPanel />}
           </aside>
         )}
 
