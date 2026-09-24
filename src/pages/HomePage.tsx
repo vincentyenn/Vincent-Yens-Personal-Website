@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
-import { ArrowRight, Play } from '@phosphor-icons/react'
+import { ArrowRight, Briefcase, GraduationCap, MusicNotes, Play, VideoCamera } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { CoverArt } from '../components/CoverArt'
@@ -29,7 +29,7 @@ export function HomePage() {
         <div className="hero__scrim" aria-hidden="true" />
         <div className="hero__content">
           <p data-hero-reveal className="meta-label">Vincent Yen</p>
-          <h1 data-hero-reveal id="home-heading">Hi, I'm Vincent. Welcome to my website.</h1>
+          <h1 data-hero-reveal id="home-heading"><span>Hi, I'm Vincent.</span><span>Welcome to my website.</span></h1>
           <p data-hero-reveal>I turn ideas into clear, considered interfaces that invite people to explore.</p>
           <div data-hero-reveal className="hero__actions">
             <Link className="primary-action" to="/projects">
@@ -37,6 +37,41 @@ export function HomePage() {
               Explore projects
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="home-snapshot" aria-labelledby="snapshot-title">
+        <div className="home-snapshot__heading">
+          <h2 id="snapshot-title">A little about me</h2>
+        </div>
+        <div className="home-snapshot__grid">
+          <article className="snapshot-card snapshot-card--identity">
+            <GraduationCap className="snapshot-card__icon" size={30} weight="regular" aria-hidden="true" />
+            <div>
+              <h3>Computer science at Texas A&amp;M</h3>
+              <p>I like building useful software and making the details feel considered.</p>
+            </div>
+          </article>
+
+          <article className="snapshot-card snapshot-card--work">
+            <div className="snapshot-card__title">
+              <Briefcase size={21} weight="regular" aria-hidden="true" />
+              <h3>Work and research</h3>
+            </div>
+            <div className="snapshot-card__entries">
+              <p><strong>USAA</strong><span>Software engineering intern</span></p>
+              <p><strong>UT Dallas</strong><span>Research intern, machine learning</span></p>
+            </div>
+          </article>
+
+          <article className="snapshot-card snapshot-card--creative">
+            <div className="snapshot-card__title">
+              <VideoCamera size={21} weight="regular" aria-hidden="true" />
+              <MusicNotes size={21} weight="regular" aria-hidden="true" />
+              <h3>Outside the screen</h3>
+            </div>
+            <p>Aggie football videography, photography, and finding new music.</p>
+          </article>
         </div>
       </section>
 

@@ -167,7 +167,7 @@ export const projects: Project[] = [
     summary: 'A personal portfolio shaped like a music library, built to make exploring work feel natural.',
     coverPosition: 'left',
     tools: ['React', 'TypeScript', 'GSAP', 'Lenis', 'Vanta'],
-    repository: 'https://github.com/vincentyenn/Vincent-Yens-Personal-Website',
+    repository: 'https://github.com/vincentyenn/portfolio',
     tracks: [
       {
         id: 'overview', title: 'Overview', description: 'The idea and the experience it creates.', duration: '1:12',
@@ -179,7 +179,7 @@ export const projects: Project[] = [
       {
         id: 'process', title: 'Process', description: 'How the interface became a connected system.', duration: '2:08',
         body: [
-          'The process began with Spotify desktop and mobile references, then separated recognizable interaction patterns from protected branding and media. The library, centered search, contextual panel, and player became the core shell.',
+          'The process began with Spotify desktop and mobile references, then separated recognizable interaction patterns from protected branding and media. The library, centered search, and player became the core shell.',
           'Each part was tested against one question: does it help someone understand the work, or is it decoration? That rule keeps the theme useful rather than costume-like.',
         ],
       },

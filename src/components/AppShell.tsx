@@ -10,13 +10,9 @@ import {
 } from '@phosphor-icons/react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
-import { AboutContextPanel } from './AboutContextPanel'
-import { ConnectionVisual } from './ConnectionVisual'
 import { CoverArt } from './CoverArt'
-import { ExperienceContextPanel } from './ExperienceContextPanel'
 import { projects } from '../data/content'
 import { PlayerBar } from './PlayerBar'
-import { ProjectContextPanel } from './ProjectContextPanel'
 import { SearchOverlay } from './SearchOverlay'
 import { SmoothScrollProvider } from './SmoothScrollProvider'
 
@@ -38,7 +34,6 @@ export function AppShell() {
   const timelineRef = useRef<HTMLDivElement>(null)
   const location = useLocation()
   const navigate = useNavigate()
-  const isProjectDetail = location.pathname.startsWith('/projects/')
 
   const closeSearch = useCallback(() => setSearchOpen(false), [])
 
@@ -70,7 +65,7 @@ export function AppShell() {
       totalTimeRef={totalTimeRef}
       timelineRef={timelineRef}
     >
-      <div className={`app-shell${isProjectDetail ? ' app-shell--detail' : ''}`}>
+      <div className="app-shell">
         <header className="topbar">
           <div className="topbar__history">
             <button type="button" onClick={() => navigate(-1)} aria-label="Go back"><ArrowLeft size={22} /></button>
@@ -115,18 +110,6 @@ export function AppShell() {
             </div>
           </div>
         </main>
-
-        {!isProjectDetail && (
-          <aside className="context-panel">
-            {location.pathname === '/'
-              ? <ConnectionVisual />
-              : location.pathname === '/about'
-                ? <AboutContextPanel />
-                : location.pathname === '/experience'
-                  ? <ExperienceContextPanel />
-                  : <ProjectContextPanel />}
-          </aside>
-        )}
 
         <PlayerBar
           progressRef={progressRef}

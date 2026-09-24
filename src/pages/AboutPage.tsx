@@ -54,9 +54,9 @@ export function AboutPage() {
         </header>
 
         <div className="about-profile-actions">
-          <a href="#recent" className="about-profile-actions__play" aria-label="Jump to recent updates">
+          <Link to="/about#recent" className="about-profile-actions__play" aria-label="Jump to recent updates">
             <Play size={25} weight="fill" />
-          </a>
+          </Link>
         </div>
 
         <section data-about-reveal className="about-intro" aria-labelledby="about-intro-title">

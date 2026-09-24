@@ -1,4 +1,5 @@
 import { ArrowUpRight, Briefcase, FileText } from '@phosphor-icons/react'
+import { Link } from 'react-router-dom'
 import { experienceProfile } from '../data/content'
 
 export function ExperienceContextPanel() {
@@ -18,9 +19,9 @@ export function ExperienceContextPanel() {
             <div key={highlight.label}><dt>{highlight.value}</dt><dd>{highlight.label}</dd></div>
           ))}
         </dl>
-        <a href="/experience#full-resume">
+        <Link to="/experience#full-resume">
           <FileText size={18} /> View full resume <ArrowUpRight size={16} />
-        </a>
+        </Link>
       </div>
     </section>
   )

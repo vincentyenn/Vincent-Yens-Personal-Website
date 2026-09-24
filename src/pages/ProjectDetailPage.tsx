@@ -1,12 +1,10 @@
 import { ArrowLeft, ArrowUpRight, DotsThree, Play, Shuffle, Timer } from '@phosphor-icons/react'
 import { Link, useParams } from 'react-router-dom'
 import { CoverArt } from '../components/CoverArt'
-import { useSmoothScroll } from '../components/SmoothScrollProvider'
 import { projects } from '../data/content'
 
 export function ProjectDetailPage() {
   const { slug } = useParams()
-  const { scrollTo } = useSmoothScroll()
   const project = projects.find((item) => item.slug === slug)
 
   if (!project) {
@@ -42,16 +40,12 @@ export function ProjectDetailPage() {
         <nav className="tracklist" aria-label={`${project.title} sections`}>
           <div className="tracklist__header" aria-hidden="true"><span>#</span><span>Title</span><span>Section</span><Timer size={18} /></div>
           {project.tracks.map((track, index) => (
-            <a key={track.id} href={`#${track.id}`} onClick={(event) => {
-              event.preventDefault()
-              history.replaceState(null, '', `#${track.id}`)
-              scrollTo(`#${track.id}`)
-            }}>
+            <Link key={track.id} to={`/projects/${project.slug}#${track.id}`}>
               <span>{index + 1}</span>
               <span><strong>{track.title}</strong><small>{track.description}</small></span>
               <span>{project.title}</span>
               <span>{track.duration}</span>
-            </a>
+            </Link>
           ))}
         </nav>
 

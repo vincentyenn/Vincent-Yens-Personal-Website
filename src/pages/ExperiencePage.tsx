@@ -49,7 +49,7 @@ export function ExperiencePage() {
       </header>
 
       <div className="experience-actions" aria-label="Resume actions">
-        <a className="experience-actions__primary" href="/Vincent-Yen-Resume.pdf" download>
+        <a className="experience-actions__primary" href={`${import.meta.env.BASE_URL}Vincent-Yen-Resume.pdf`} download>
           <DownloadSimple size={21} weight="bold" />
           Download resume
         </a>
@@ -138,10 +138,10 @@ export function ExperiencePage() {
             <h2 id="full-resume-title">Full resume</h2>
             <p>View the complete one-page resume here, or open the PDF for a closer look.</p>
           </div>
-          <a className="experience-resume__document" href="/Vincent-Yen-Resume.pdf" target="_blank" rel="noreferrer" aria-label="Open Vincent Yen's complete resume as a PDF">
-            <img src="/resume-cover.png" alt="Vincent Yen's complete resume" />
+          <a className="experience-resume__document" href={`${import.meta.env.BASE_URL}Vincent-Yen-Resume.pdf`} target="_blank" rel="noreferrer" aria-label="Open Vincent Yen's complete resume as a PDF">
+            <img src={`${import.meta.env.BASE_URL}resume-cover.png`} alt="Vincent Yen's complete resume" />
           </a>
-          <a className="experience-resume__open" href="/Vincent-Yen-Resume.pdf" target="_blank" rel="noreferrer">
+          <a className="experience-resume__open" href={`${import.meta.env.BASE_URL}Vincent-Yen-Resume.pdf`} target="_blank" rel="noreferrer">
             Open full PDF <ArrowUpRight size={18} />
           </a>
         </section>
